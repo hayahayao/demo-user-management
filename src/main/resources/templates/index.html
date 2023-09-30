@@ -55,10 +55,10 @@
                   <td th:text="${user.nickname}"></td>
                   <td th:text="${user.password}"></td>
                   <td>
-                    <button class="updateUserBtn btn btn-warning btn-xs" type="button">
+                    <button th:onclick="updateBtn([[${user.id}]],[[${user.username}]],[[${user.nickname}]],[[${user.password}]]);" class="updateUserBtn btn btn-warning btn-xs" type="button">
                       <i class="fa fa-edit"></i> 編集
                     </button>
-                    <button class="deleteUserBtn btn btn-danger btn-xs" type="button">
+                    <button th:onclick="|deleteBtn(${user.id})|" class="deleteUserBtn btn btn-danger btn-xs" type="button">
                       <i class="fa fa-remove"></i> 削除
                     </button>
                   </td>
@@ -83,18 +83,18 @@
             <form role="form">
               <div class="form-group">
                 <label>ユーザID：</label>
-                <input type="text" class="form-control">
+                <input id="addUserName" type="text" class="form-control">
               </div>
               <div class="form-group">
                 <label>ニックネーム：</label>
-                <input type="text" class="form-control">
+                <input id="addNickname" type="text" class="form-control"/>
               </div>
               <div class="form-group">
                 <label>パスワード：</label>
-                <input type="password" class="form-control">
+                <input id="addPassword" type="password" class="form-control"/>
               </div>
               <div>
-                <button class="btn btn-sm btn-primary" type="submit">追加</button>
+                <button id="addSubmitBtn" class="btn btn-sm btn-primary" type="button">追加</button>
               </div>
             </form>
           </div>
@@ -113,19 +113,23 @@
             <h3 class="m-t-none m-b">ユーザ編集</h3>
             <form role="form">
               <div class="form-group">
+                <label>ユーザNo：</label>
+                <input id="updateUserId" type="text" class="form-control" disabled>
+              </div>
+              <div class="form-group">
                 <label>ユーザID：</label>
-                <input type="text" class="form-control">
+                <input id="updateUsername" type="text" class="form-control">
               </div>
               <div class="form-group">
                 <label>ニックネーム：</label>
-                <input type="text" class="form-control">
+                <input id="updateNickname" type="text" class="form-control">
               </div>
               <div class="form-group">
                 <label>パスワード：</label>
-                <input type="password" class="form-control">
+                <input id="updatePassword" type="password" class="form-control">
               </div>
               <div>
-                <button class="btn btn-sm btn-primary" type="submit">編集</button>
+                <button id="updateSubmitBtn" class="btn btn-sm btn-primary" type="button">編集</button>
               </div>
             </form>
           </div>
